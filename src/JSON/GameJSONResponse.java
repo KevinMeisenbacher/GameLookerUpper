@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class GameInfo {
+public class GameJSONResponse {
     @SerializedName("name")
     private String gameName;
 
@@ -14,11 +14,11 @@ public class GameInfo {
     @SerializedName("platforms")
     private PlatformInfo[] platforms;
 
-    public GameInfo(String gameName, String shortDescription, PlatformInfo[] platforms) {
-        setGameName(gameName);
-        setShortDescription(shortDescription);
-        setPlatforms(platforms);
-    }
+//    public GameInfo(String gameName, String shortDescription, PlatformInfo[] platforms) {
+//        setGameName(gameName);
+//        setShortDescription(shortDescription);
+//        setPlatforms(platforms);
+//    }
 
     public String getGameName() {
         return gameName;
