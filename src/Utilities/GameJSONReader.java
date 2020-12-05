@@ -1,6 +1,6 @@
 package Utilities;
 
-import JSON.GameJSONResponse;
+import Models.GameJSONResponse;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
@@ -10,7 +10,7 @@ public class GameJSONReader {
     public static GameJSONResponse getGameJSON() {
         GameJSONResponse gameResponse = null;
         try (
-            FileReader fileReader = new FileReader("./src/JSON/games.json");
+            FileReader fileReader = new FileReader("./src/Data/games.json");
             JsonReader jsonReader = new JsonReader(fileReader);
          )
              {
