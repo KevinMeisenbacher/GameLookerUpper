@@ -27,7 +27,7 @@
                      <children>
                         <Label stylesheets="@styles.css" text="Search for a game:" />
                         <TextField fx:id="searchBox" />
-                        <Button fx:id="searchButton" mnemonicParsing="false" text="Search!" />
+                        <Button fx:id="searchButton" mnemonicParsing="false" onAction="#search" text="Search!" />
                      </children>
                   </HBox>
                   <HBox>
