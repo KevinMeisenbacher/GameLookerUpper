@@ -1,9 +1,12 @@
 package Controllers;
 
+import Models.GameData;
 import Models.GameJSONResponse;
 import Models.ResultsInfo;
 import Utilities.APIUtility;
 import Utilities.GameJSONReader;
+import Utilities.SceneChanger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -14,6 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -35,13 +39,21 @@ public class LookerUpperController implements Initializable {
     private Label matchingGamesLabel;
 
     private GameJSONResponse response;
+    private ResultsInfo resultsInfo;
+    private GameData gameData;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        getData();
+    }
+
+    public void getData() {
         listView.getSelectionModel().selectedItemProperty().addListener(
                 (obs, oldValue, selectedGame) -> {
-            imageView.setImage(new Image(selectedGame.getBoxArt().getImage()));
-        }
+                    imageView.setImage(new Image(selectedGame.getBoxArt().getImage()));
+                    resultsInfo.setName(selectedGame.getName());
+                    gameData.setTitle(gameData.getTitle());
+                }
         );
     }
 
@@ -59,5 +71,10 @@ public class LookerUpperController implements Initializable {
         matchingGamesLabel.setText("Total results: "+response.getNumOfResults());
         listView.getItems().addAll(response.getResults());
         totalResultsLabel.setText("Matching games: "+listView.getItems().size());
+    }
+    @FXML
+    public void viewDetails(ActionEvent event) throws IOException {
+
+        SceneChanger.changeScene(event, "../Views/detailsView.fxml", "Details");
     }
 }

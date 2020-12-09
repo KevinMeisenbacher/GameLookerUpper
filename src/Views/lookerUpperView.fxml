@@ -40,8 +40,21 @@
                         </StackPane>
                      </children>
                   </HBox>
-                  <Label fx:id="totalResultsLabel" text="Total Results: " />
-                  <Label fx:id="matchingGamesLabel" layoutX="271.0" layoutY="280.0" text="Matching Games" />
+                  <HBox>
+                     <children>
+                        <VBox>
+                           <children>
+                              <Label fx:id="totalResultsLabel" text="Total Results: " />
+                              <Label fx:id="matchingGamesLabel" text="Matching Games" />
+                           </children>
+                        </VBox>
+                        <Button mnemonicParsing="false" onAction="#viewDetails" text="View Details">
+                           <HBox.margin>
+                              <Insets left="130.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>
