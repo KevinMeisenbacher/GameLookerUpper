@@ -17,4 +17,8 @@ public class RatingsInfo {
     public void setRatingName(String ratingName) {
         this.ratingName = ratingName;
     }
+
+    public String toString() {
+        return String.format("%s", ratingName);
+    }
 }

@@ -25,13 +25,14 @@ public class ResultsInfo {
     private RatingsInfo[] ratings;
 
     public ResultsInfo(String deck, String name, PlatformInfo[] platforms, BoxArt boxArt,
-                       int numOfReviews, String releaseDate) {
+                       int numOfReviews, String releaseDate, RatingsInfo[] ratings) {
         setDeck(deck);
         setName(name);
         setPlatforms(platforms);
         setBoxArt(boxArt);
         setNumOfReviews(numOfReviews);
         setReleaseDate(releaseDate);
+        setRatings(ratings);
     }
 
     public String getDeck() {
@@ -80,6 +81,14 @@ public class ResultsInfo {
 
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    public RatingsInfo[] getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(RatingsInfo[] ratings) {
+        this.ratings = ratings;
     }
 
     public String toString() {

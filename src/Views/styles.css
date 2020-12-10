@@ -15,3 +15,6 @@
     -fx-background-color: radial-gradient(focus-angle 360deg, center 50% 50%, radius 130%, #d0b000, black);
     -fx-text-fill: black;
 }
+#labelBox {
+    -fx-background-color: #4e3800;
+}
