@@ -1,7 +1,5 @@
 package Models;
 
-import Models.PlatformInfo;
-import Models.ResultsInfo;
 import com.google.gson.annotations.SerializedName;
 
 public class GameJSONResponse {
@@ -10,32 +8,54 @@ public class GameJSONResponse {
     private ResultsInfo[] results;
     
     @SerializedName("number_of_total_results")
-    private String numOfResults;
+    private String totalResults;
 
-    public GameJSONResponse() {
-    }
-
-    public GameJSONResponse(ResultsInfo[] results, String numOfResults) {
+    /**
+     * Make it possible for rows to return
+     * @param results
+     * @param totalResults
+     */
+    public GameJSONResponse(ResultsInfo[] results, String totalResults) {
         setResults(results);
-        setNumOfResults(numOfResults);
+        setTotalResults(totalResults);
     }
 
+    /**
+     * Retun results
+     * @return
+     */
     public ResultsInfo[] getResults() {
         return results;
     }
 
+    /**
+     * Initialize results
+     * @param results
+     */
     public void setResults(ResultsInfo[] results) {
         this.results = results;
     }
 
-    public String getNumOfResults() {
-        return numOfResults;
+    /**
+     * Return total results
+     * @return
+     */
+    public String getTotalResults() {
+        return totalResults;
     }
 
-    public void setNumOfResults(String numOfResults) {
-        this.numOfResults = numOfResults;
+    /**
+     * Initialize total results
+     * @param totalResults
+     */
+    public void setTotalResults(String totalResults) {
+        this.totalResults = totalResults;
     }
 
+    /**
+     * Make results human-readable
+     * @return
+     */
     public String toString() {
         return String.format("%s", results);
     }

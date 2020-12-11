@@ -1,6 +1,7 @@
 package Controllers;
 
 import Models.*;
+import Utilities.APIUtility;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -36,40 +38,58 @@ public class DetailsController implements Initializable {
     private Label descriptionLabel;
 
     @FXML
+    private Label platformsLabel;
+
+    @FXML
     private ImageView imageView;
 
-    private LookerUpperController controller;
-    private GameData gameData;
-    private PlatformInfo[] platformInfo;
-    private BoxArt boxArt;
+    private ResultsInfo resultsInfo;
 
+    /**
+     * Init
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        gameTitleLabel.setText("");
+
     }
 
+    /**
+     * Grab info from the LookerUpper view
+     * @param info
+     */
     public void grabGameInfo(ResultsInfo info) {
-        ResultsInfo resultsInfo = info;
+        // Grab data
+        resultsInfo = info;
         RatingsInfo[] ratings = resultsInfo.getRatings();
+        PlatformInfo[] platforms = resultsInfo.getPlatforms();
         gameTitleLabel.setText(resultsInfo.getName());
+
+        // Populate labels
         imageView.setImage(new Image(resultsInfo.getBoxArt().getImage()));
         releaseDateLabel.setText(resultsInfo.getReleaseDate());
         reviewsLabel.setText(String.valueOf(resultsInfo.getNumOfReviews()));
         ratingsLabel.setText(Arrays.toString(ratings));
         descriptionLabel.setText(resultsInfo.getDeck());
+        platformsLabel.setText(Arrays.toString(platforms));
     }
 
+    /**
+     * Switch back to main controller
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void returnToSearch(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(new Object(){}.getClass().getResource("../Views/lookerUpperView.fxml"));
         Parent root = loader.load();
-        LookerUpperController controller = loader.getController();
-        controller.getData();
+        // Set the scene
         Scene scene = new Scene(root);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-
         stage.setScene(scene);
+        stage.getIcons().add(new Image("./images/defaultImage.png"));
         stage.setTitle("Game Looker Upper");
         stage.show();
     }

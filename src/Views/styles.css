@@ -1,14 +1,23 @@
-* {
+/* https://stackoverflow.com/questions/12173288/specifying-external-font-in-javafx-css
+Learned how to apply a custom font with this because default fonts are boring!*/
+@font-face {
+    font-family: Garamond;
+    src: url("fonts/Garamond.ttf");
+}
+* { /* Global Font Settings */
     -fx-text-fill: #c00000;
-    -fx-font-family: "OpenSymbol";
+    -fx-font-family: "Garamond";
+    -fx-text-fill: red;
 }
 .root {
-    -fx-background-color: radial-gradient(focus-angle 360deg, center 50% 50%, radius 75%, green, black);
+    -fx-background-color: radial-gradient(focus-angle 360deg, center 50% 50%, radius 75%, blue, black);
     -fx-font-size: 16px;
-    -fx-text-fill: red;
 }
 .title {
     -fx-font-size: 28px;
+}
+.text-field {
+    -fx-background-color: linear-gradient(#c0c0ff 0%, white 50%, #c0c0ff 100%);
 }
 .button {
     -fx-background-radius: 5px;
@@ -16,5 +25,11 @@
     -fx-text-fill: black;
 }
 #labelBox {
-    -fx-background-color: #4e3800;
+    -fx-background-color: linear-gradient(#401c00 0%, #603000 50%, #401c00 100%);
+}
+
+/* Make the results HBox look like a box to stand out */
+#resultsBox {
+    -fx-background-color: #ffe8c0;
+    -fx-border-color: #100800;
 }
